@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CƯỜNG SOÁI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#090909;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    text-align:center;
+}
+
+/* LOGO */
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:3px;
+
+    background:linear-gradient(
+        90deg,
+        #00eaff,
+        #ffffff,
+        #ff00d4,
+        #00eaff
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    animation:logo 5s linear infinite;
+
+    margin-bottom:10px;
+}
+
+@keyframes logo{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+
+}
+
+.subtitle{
+    color:#888;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+
+/* QR */
+
+.qr-box{
+
+    background:white;
+
+    width:250px;
+    height:250px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    margin:auto;
+
+    box-shadow:
+        0 0 20px rgba(0,220,255,.2),
+        0 0 50px rgba(0,220,255,.1);
+
+}
+
+#qrcode{
+    width:100%;
+    height:100%;
+}
+
+.qr-text{
+    margin-top:20px;
+    color:#aaa;
+    font-size:14px;
+}
+
+
+/* =========================
+   TRANG SAU KHI QUÉT QR
+========================= */
+
+#profile{
+    display:none;
+}
+
+.profile-title{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.profile-sub{
+    color:#888;
+    margin-bottom:25px;
+}
+
+
+/* SOCIAL */
+
+.social{
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    background:#151515;
+
+    border:1px solid #292929;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+.social:hover{
+
+    transform:scale(1.02);
+
+    background:#202020;
+
+}
+
+
+.icon{
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    margin-right:13px;
+
+}
+
+.zalo{
+    background:#0084ff;
+}
+
+.facebook{
+    background:#1877f2;
+}
+
+.tiktok{
+    background:#000;
+    border:1px solid #555;
+}
+
+.instagram{
+    background:#e1306c;
+}
+
+.phone{
+    background:#16a34a;
+}
+
+
+.info{
+
+    flex:1;
+    text-align:left;
+
+}
+
+.name{
+
+    font-size:16px;
+    font-weight:bold;
+
+}
+
+.value{
+
+    font-size:13px;
+    color:#888;
+
+    margin-top:4px;
+
+}
+
+
+.copy{
+
+    border:0;
+
+    background:#292929;
+
+    color:white;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+
+.back{
+
+    margin-top:20px;
+
+    padding:10px 18px;
+
+    border:1px solid #333;
+
+    background:#151515;
+
+    color:#aaa;
+
+    border-radius:20px;
+
+}
+
+
+.footer{
+
+    margin-top:25px;
+
+    color:#555;
+
+    font-size:12px;
+
+}
+
+
+#toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#222;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    display:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- ==================================
+     MÀN HÌNH QR
+================================== -->
+
+<div id="qrPage">
+
+    <div class="logo">
+        CƯỜNG SOÁI
+    </div>
+
+    <div class="subtitle">
+        Quét mã QR để kết nối với tôi
+    </div>
+
+    <div class="qr-box">
+
+        <div id="qrcode"></div>
+
+    </div>
+
+    <div class="qr-text">
+
+        📱 Đừng Kết Bạn ..!
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================
+     MÀN HÌNH SAU KHI QUÉT
+================================== -->
+
+<div id="profile">
+
+    <div class="logo">
+        CƯỜNG SOÁI
+    </div>
+
+    <div class="profile-sub">
+        Kết nối với tôi
+    </div>
+
+
+    <!-- ZALO -->
+
+    <a
+        class="social"
+        href="https://zalo.me/0364475143"
+        target="_blank"
+    >
+
+        <div class="icon zalo">
+            Z
+        </div>
+
+        <div class="info">
+
+            <div class="name">
+                Zalo
+            </div>
+
+            <div class="value">
+                0364475143
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyText(event,'0123456789')"
+        >
+            COPY
+        </button>
+
+    </a>
+
+
+
+    <!-- FACEBOOK -->
+
+    <a
+        class="social"
+        href="https://www.facebook.com/share/18LnDEGHDe/"
+        target="_blank"
+    >
+
+        <div class="icon facebook">
+            f
+        </div>
+
+        <div class="info">
+
+            <div class="name">
+                Facebook
+            </div>
+
+            <div class="value">
+                Facebook của tôi
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyText(event,'https://www.facebook.com/share/18LnDEGHDe/"
+        >
+            COPY
+        </button>
+
+    </a>
+
+
+
+    <!-- TIKTOK -->
+
+    <a
+        class="social"
+        href="https://www.tiktok.com/"
+        target="_blank"
+    >
+
+        <div class="tiktok.com/@anhsoaid12">
+            ♪
+        </div>
+
+        <div class="info">
+
+            <div class="name">
+                TikTok
+            </div>
+
+            <div class="value">
+                @anhsoaid12
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyText(event,'@anhsoaid12')"
+        >
+            COPY
+        </button>
+
+    </a>
+
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+        class="social"
+        href="https://instagram.com/"
+        target="_blank"
+    >
+
+        <div class="icon instagram">
+            ◎
+        </div>
+
+        <div class="info">
+
+            <div class="name">
+                Instagram
+            </div>
+
+            <div class="value">
+                @instagram
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyText(event,'@instagram')"
+        >
+            COPY
+        </button>
+
+    </a>
+
+
+
+    <!-- SỐ ĐIỆN THOẠI -->
+
+    <a
+        class="social"
+        href="tel:0123456789"
+    >
+
+        <div class="icon phone">
+            ☎
+        </div>
+
+        <div class="info">
+
+            <div class="name">
+                Số điện thoại
+            </div>
+
+            <div class="value">
+                0123456789
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyText(event,'0123456789')"
+        >
+            COPY
+        </button>
+
+    </a>
+
+
+    <button
+        class="back"
+        onclick="location.reload()"
+    >
+        ← Quay lại
+    </button>
+
+
+    <div class="footer">
+        © 2026 CƯỜNG SOÁI
+    </div>
+
+</div>
+
+</div>
+
+
+<div id="toast">
+    Đã sao chép!
+</div>
+
+
+
+<!-- QR CODE -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<script>
+
+
+/*
+==================================================
+TẠO QR
+==================================================
+*/
+
+let currentURL = window.location.href;
+
+
+new QRCode(
+    document.getElementById("qrcode"),
+    {
+
+        text:currentURL,
+
+        width:220,
+        height:220,
+
+        colorDark:"#000000",
+        colorLight:"#ffffff",
+
+        correctLevel:QRCode.CorrectLevel.H
+
+    }
+);
+
+
+
+/*
+==================================================
+PHÂN BIỆT:
+
+MÁY CHỦ:
+HIỆN QR
+
+MÁY QUÉT:
+HIỆN TRANG CÁ NHÂN
+==================================================
+*/
+
+
+if(
+    window.location.hash === "#profile"
+){
+
+    document.getElementById("qrPage").style.display="none";
+
+    document.getElementById("profile").style.display="block";
+
+}
+
+
+
+/*
+==================================================
+COPY
+==================================================
+*/
+
+function copyText(event,text){
+
+    event.preventDefault();
+
+    event.stopPropagation();
+
+    navigator.clipboard.writeText(text);
+
+    let toast=document.getElementById("toast");
+
+    toast.style.display="block";
+
+    setTimeout(
+        function(){
+
+            toast.style.display="none";
+
+        },
+        1500
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
